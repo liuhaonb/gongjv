@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>乐享生活工具箱</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- 顶部导航栏 -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-toolbox"></i>
+                    <span>乐享生活工具箱</span>
+                </div>
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="搜索工具名称...">
+                    <button id="searchBtn"><i class="fas fa-search"></i></button>
+                </div>
+                <nav class="nav-links">
+                    <a href="#home">首页</a>
+                    <a href="#tools">全部工具</a>
+                    <a href="#hot">热门排行</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主要内容区域 -->
+    <main class="main-content">
+        <div class="container">
+            <!-- 工具分类导航 -->
+            <section class="category-section">
+                <h2 class="section-title">
+                    <i class="fas fa-th-large"></i>
+                    工具分类
+                </h2>
+                <div class="category-grid" id="categoryGrid">
+                    <div class="category-item active" data-category="all">
+                        <i class="fas fa-th"></i>
+                        <span>全部工具</span>
+                    </div>
+                    <div class="category-item" data-category="calculation">
+                        <i class="fas fa-calculator"></i>
+                        <span>日常计算</span>
+                    </div>
+                    <div class="category-item" data-category="text">
+                        <i class="fas fa-font"></i>
+                        <span>文本处理</span>
+                    </div>
+                    <div class="category-item" data-category="life">
+                        <i class="fas fa-home"></i>
+                        <span>生活查询</span>
+                    </div>
+                    <div class="category-item" data-category="fun">
+                        <i class="fas fa-smile"></i>
+                        <span>趣味工具</span>
+                    </div>
+                    <div class="category-item" data-category="efficiency">
+                        <i class="fas fa-rocket"></i>
+                        <span>效率辅助</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 热门工具推荐区 -->
+            <section class="hot-tools-section" id="hot">
+                <h2 class="section-title">
+                    <i class="fas fa-fire"></i>
+                    热门工具推荐
+                </h2>
+                <div class="hot-tools-grid" id="hotToolsGrid">
+                    <!-- 热门工具将通过JavaScript动态生成 -->
+                </div>
+            </section>
+
+            <!-- 全部工具汇总板块 -->
+            <section class="all-tools-section" id="tools">
+                <h2 class="section-title">
+                    <i class="fas fa-tools"></i>
+                    全部工具
+                </h2>
+                <div class="tools-grid" id="toolsGrid">
+                    <!-- 工具卡片将通过JavaScript动态生成 -->
+                </div>
+            </section>
+
+            <!-- 搜索结果区域 -->
+            <section class="search-results-section" id="searchResults" style="display: none;">
+                <h2 class="section-title">
+                    <i class="fas fa-search"></i>
+                    搜索结果
+                </h2>
+                <div class="tools-grid" id="searchResultsGrid">
+                    <!-- 搜索结果将通过JavaScript动态生成 -->
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- 工具详情面板 -->
+    <div class="tool-panel-overlay" id="toolPanelOverlay">
+        <div class="tool-panel" id="toolPanel">
+            <div class="tool-panel-header">
+                <h3 id="toolPanelTitle">工具详情</h3>
+                <button class="close-btn" id="closeToolPanel">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="tool-panel-content" id="toolPanelContent">
+                <!-- 工具详情内容将通过JavaScript动态生成 -->
+            </div>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 乐享生活工具箱 - 让生活更便捷</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
