@@ -1,0 +1,814 @@
+/* 全局样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: #f5f7fa;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* 顶部导航栏 */
+.header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 0;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.logo i {
+    margin-right: 10px;
+    font-size: 1.8rem;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 25px;
+    padding: 5px 15px;
+    margin: 0 20px;
+}
+
+.search-box input {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1rem;
+    padding: 8px 0;
+    outline: none;
+    width: 300px;
+}
+
+.search-box input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.search-box button {
+    background: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 1.1rem;
+    padding: 8px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: opacity 0.3s;
+}
+
+.nav-links a:hover {
+    opacity: 0.8;
+}
+
+/* 主要内容区域 */
+.main-content {
+    padding: 30px 0;
+    min-height: calc(100vh - 200px);
+}
+
+.section-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #333;
+    display: flex;
+    align-items: center;
+}
+
+.section-title i {
+    margin-right: 10px;
+    color: #667eea;
+}
+
+/* 工具分类导航 */
+.category-section {
+    margin-bottom: 40px;
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+}
+
+.category-item {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.category-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.category-item.active {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.category-item i {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.category-item span {
+    font-weight: 500;
+}
+
+/* 热门工具推荐区 */
+.hot-tools-section {
+    margin-bottom: 40px;
+}
+
+.hot-tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+/* 全部工具汇总板块 */
+.all-tools-section {
+    margin-bottom: 40px;
+}
+
+.tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.tool-card {
+    background: white;
+    border-radius: 12px;
+    padding: 25px;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.tool-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.tool-card-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+    font-size: 1.8rem;
+}
+
+.tool-card-name {
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+}
+
+.tool-card-desc {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+
+.tool-card-category {
+    font-size: 0.8rem;
+    padding: 4px 10px;
+    border-radius: 20px;
+    background: #f0f2f5;
+    color: #666;
+}
+
+.tool-card-rank {
+    margin-top: 10px;
+    font-size: 0.85rem;
+    color: #667eea;
+    font-weight: 500;
+}
+
+/* 工具详情面板 */
+.tool-panel-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+}
+
+.tool-panel-overlay.active {
+    display: flex;
+}
+
+.tool-panel {
+    background: white;
+    border-radius: 16px;
+    width: 90%;
+    max-width: 600px;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.tool-panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 25px;
+    border-bottom: 1px solid #eee;
+}
+
+.tool-panel-header h3 {
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #666;
+    transition: color 0.3s;
+}
+
+.close-btn:hover {
+    color: #333;
+}
+
+.tool-panel-content {
+    padding: 25px;
+}
+
+/* 工具操作区域通用样式 */
+.tool-operation {
+    margin-bottom: 20px;
+}
+
+.tool-operation label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+.tool-operation input[type="text"],
+.tool-operation input[type="number"],
+.tool-operation input[type="date"],
+.tool-operation input[type="time"],
+.tool-operation textarea,
+.tool-operation select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+    outline: none;
+}
+
+.tool-operation input:focus,
+.tool-operation textarea:focus,
+.tool-operation select:focus {
+    border-color: #667eea;
+}
+
+.tool-operation textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.tool-result {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid #eee;
+}
+
+.tool-result-title {
+    font-weight: 500;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.tool-result-content {
+    font-size: 1.1rem;
+    color: #667eea;
+    word-break: break-all;
+}
+
+.tool-buttons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.tool-btn {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.tool-btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.tool-btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+.tool-btn-secondary {
+    background: #f0f2f5;
+    color: #333;
+}
+
+.tool-btn-secondary:hover {
+    background: #e0e2e5;
+}
+
+.tool-btn-success {
+    background: #28a745;
+    color: white;
+}
+
+.tool-btn-success:hover {
+    background: #218838;
+}
+
+.tool-btn-warning {
+    background: #ffc107;
+    color: #333;
+}
+
+.tool-btn-warning:hover {
+    background: #e0a800;
+}
+
+/* 计算器工具样式 */
+.calculator {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.calculator-display {
+    grid-column: span 4;
+    background: #f8f9fa;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 15px;
+    text-align: right;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.calculator-btn {
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.calculator-btn-number {
+    background: #f0f2f5;
+}
+
+.calculator-btn-number:hover {
+    background: #e0e2e5;
+}
+
+.calculator-btn-operator {
+    background: #667eea;
+    color: white;
+}
+
+.calculator-btn-operator:hover {
+    background: #5a6fd6;
+}
+
+.calculator-btn-function {
+    background: #764ba2;
+    color: white;
+}
+
+.calculator-btn-function:hover {
+    background: #6a4190;
+}
+
+/* 颜色拾取工具样式 */
+.color-picker-container {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.color-preview {
+    width: 100px;
+    height: 100px;
+    border-radius: 8px;
+    border: 2px solid #e0e0e0;
+}
+
+.color-inputs {
+    flex: 1;
+    min-width: 200px;
+}
+
+.color-input-group {
+    margin-bottom: 10px;
+}
+
+.color-input-group label {
+    display: inline-block;
+    width: 40px;
+    font-weight: 500;
+}
+
+.color-input-group input {
+    width: 150px;
+    padding: 8px;
+    border: 2px solid #e0e0e0;
+    border-radius: 6px;
+}
+
+/* 二维码生成工具样式 */
+.qr-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.qr-preview {
+    padding: 20px;
+    background: white;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+}
+
+/* 随机抽签工具样式 */
+.draw-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.draw-inputs {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.draw-result {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #667eea;
+    text-align: center;
+}
+
+.draw-history {
+    width: 100%;
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 15px;
+    margin-top: 10px;
+}
+
+.draw-history-title {
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.draw-history-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.draw-history-item {
+    background: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-weight: 500;
+}
+
+/* 记事本工具样式 */
+.notepad-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.notepad-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.notepad-title {
+    font-size: 1rem;
+    padding: 8px 12px;
+    border: 2px solid #e0e0e0;
+    border-radius: 6px;
+    flex: 1;
+    min-width: 200px;
+}
+
+.notepad-content {
+    min-height: 200px;
+    resize: vertical;
+}
+
+.notepad-list {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 15px;
+}
+
+.notepad-list-title {
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.notepad-items {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.notepad-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    padding: 10px 15px;
+    border-radius: 6px;
+}
+
+.notepad-item-name {
+    font-weight: 500;
+}
+
+.notepad-item-date {
+    color: #666;
+    font-size: 0.85rem;
+}
+
+.notepad-item-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.notepad-item-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 5px;
+}
+
+.notepad-item-btn.edit {
+    color: #667eea;
+}
+
+.notepad-item-btn.delete {
+    color: #dc3545;
+}
+
+/* 页脚 */
+.footer {
+    background: #333;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 40px;
+}
+
+/* 响应式设计 */
+@media (max-width: 992px) {
+    .header-content {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .search-box {
+        margin: 0;
+        width: 100%;
+        max-width: 400px;
+    }
+    
+    .search-box input {
+        width: 100%;
+    }
+    
+    .nav-links {
+        gap: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0 15px;
+    }
+    
+    .header-content {
+        padding: 10px 0;
+    }
+    
+    .logo {
+        font-size: 1.3rem;
+    }
+    
+    .logo i {
+        font-size: 1.5rem;
+    }
+    
+    .section-title {
+        font-size: 1.3rem;
+    }
+    
+    .category-grid {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    }
+    
+    .category-item {
+        padding: 15px;
+    }
+    
+    .category-item i {
+        font-size: 1.5rem;
+    }
+    
+    .tools-grid,
+    .hot-tools-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 15px;
+    }
+    
+    .tool-card {
+        padding: 20px;
+    }
+    
+    .tool-card-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+    }
+    
+    .tool-panel {
+        width: 95%;
+        max-height: 90vh;
+    }
+    
+    .tool-panel-header {
+        padding: 15px 20px;
+    }
+    
+    .tool-panel-content {
+        padding: 20px;
+    }
+    
+    .calculator-btn {
+        padding: 12px;
+        font-size: 1rem;
+    }
+    
+    .calculator-display {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-links {
+        gap: 15px;
+        font-size: 0.9rem;
+    }
+    
+    .category-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+    
+    .tools-grid,
+    .hot-tools-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .tool-buttons {
+        flex-direction: column;
+    }
+    
+    .tool-btn {
+        width: 100%;
+    }
+    
+    .color-picker-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .draw-inputs {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .draw-inputs input {
+        width: 100%;
+    }
+}
+
+/* 动画效果 */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.tool-card {
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* 复制成功提示 */
+.copy-success {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #28a745;
+    color: white;
+    padding: 15px 30px;
+    border-radius: 8px;
+    font-weight: 500;
+    z-index: 3000;
+    animation: fadeIn 0.2s ease-out;
+}
