@@ -144,6 +144,19 @@ document.addEventListener('DOMContentLoaded', function() {
     initEventListeners();
 });
 
+// 防抖函数
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
+
 // 初始化事件监听器
 function initEventListeners() {
     // 分类点击事件
@@ -155,13 +168,26 @@ function initEventListeners() {
         }
     });
 
-    // 搜索功能
+    // 搜索功能 - 点击按钮
     searchBtn.addEventListener('click', handleSearch);
+    
+    // 搜索功能 - 回车键
     searchInput.addEventListener('keypress', function(e) {
         if (e.key === 'Enter') {
             handleSearch();
         }
     });
+
+    // 搜索功能 - 实时搜索（防抖）
+    const debouncedSearch = debounce(function() {
+        if (searchInput.value.trim()) {
+            handleSearch();
+        } else {
+            searchResults.style.display = 'none';
+        }
+    }, 300);
+
+    searchInput.addEventListener('input', debouncedSearch);
 
     // 关闭工具面板
     closeToolPanel.addEventListener('click', hideToolPanel);
@@ -201,7 +227,8 @@ function setActiveCategory(category) {
 
 // 渲染热门工具
 function renderHotTools() {
-    const hotTools = tools.sort((a, b) => a.hotLevel - b.hotLevel).slice(0, 6);
+    // 创建数组副本，避免修改原数组
+    const hotTools = [...tools].sort((a, b) => a.hotLevel - b.hotLevel).slice(0, 6);
     
     hotToolsGrid.innerHTML = hotTools.map((tool, index) => `
         <div class="tool-card" data-tool-id="${tool.id}">
@@ -265,10 +292,19 @@ function handleSearch() {
 
     const results = tools.filter(tool => 
         tool.name.toLowerCase().includes(keyword) || 
-        tool.description.toLowerCase().includes(keyword)
+        tool.description.toLowerCase().includes(keyword) ||
+        categoryNames[tool.category]?.includes(keyword)
     );
 
     if (results.length > 0) {
+        // 如果只有一个搜索结果，直接打开该工具
+        if (results.length === 1) {
+            openToolPanel(results[0].id);
+            searchResults.style.display = 'none';
+            return;
+        }
+
+        // 多个结果，显示搜索结果列表
         searchResults.style.display = 'block';
         searchResultsGrid.innerHTML = results.map(tool => `
             <div class="tool-card" data-tool-id="${tool.id}">
@@ -288,12 +324,18 @@ function handleSearch() {
                 openToolPanel(toolId);
             });
         });
+
+        // 滚动到搜索结果区域
+        searchResults.scrollIntoView({ behavior: 'smooth', block: 'start' });
     } else {
         searchResults.style.display = 'block';
         searchResultsGrid.innerHTML = `
             <div style="text-align: center; padding: 40px; color: #666;">
                 <i class="fas fa-search" style="font-size: 3rem; margin-bottom: 15px; opacity: 0.5;"></i>
                 <p>未找到匹配的工具，请尝试其他关键词</p>
+                <p style="margin-top: 10px; font-size: 0.9rem;">
+                    提示：可以搜索工具名称、描述或分类
+                </p>
             </div>
         `;
     }
